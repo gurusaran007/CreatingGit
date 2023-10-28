@@ -1,0 +1,470 @@
+Literals:
+
+   A constant value which can be assigned to the variable is called a literals;
+Example:
+ int x = 10;
+
+int -> data types/keywords;
+x -> name of variable/identifier
+10->constant value/literals.
+
+Integral Literals:
+
+For integeral datatypes(byte,short,int,Long) we can specify literal value in the following ways:
+
+1. Decimal Literals/form(Base10)
+
+allowed digits are 0 to 9 
+
+Example:
+
+int x = 10;
+
+2.Octal form(base 8)
+
+allowed digits are 0 to 7;
+
+Literals value should be prefixed with '0'
+#example
+int x = 010;
+
+3.HexaDecimal form(base 16)
+
+allowed digits are 0 to 9, a to f;
+
+for extra digits ( a to f) we can use both lower case and upper case characters , this is one of very few areas where java is not a case sensitive
+
+the literals value should be prefixed with 0x/X 
+#example
+int x = 0x10; 
+
+these are only possibe ways to specify literal value for integral data types. 
+
+Questions:
+
+Which are the following declarations are valid?
+
+1. int x = 10;
+2. int x = 0789;(CE:Integer number too large)
+3.int x = 0777;                              valid option answers: 1,3,4,5,( 2 is invalid becaz the use octal digit in 8), (6 is invalid due the r present in value its only applicabe upto 'f'))
+4.int x = 0XFace;
+5.int x = 0XBeef;
+6.int x = 0XBeer;
+
+Example 2:
+
+Octal -> Decimal  (10)8 -> (10)10 = 0*8+1*8^1 = 8 
+Hexa -> Decimal (10)16->(10)10 = 0*16+1*16^1=16
+
+JVM always should print Decimal value as output  , Even if we mentions Octal or hexa also
+
+class Test
+{
+public static void main(String args[])
+{
+   int x = 10;
+   int y = 010;                                                                       output:10....8...16
+   int z = 0X10;
+
+System.out.println(x+"...."+y+"...."+z);
+}
+}
+
+By default every integral literal is of int type but we can specify explicitly as long type by suffixed with small l or L
+Example:
+int x= 10;
+long x=10L;
+int x = 10L;( possible loss of precision found: long , required: int;
+long l = 10;
+
+There is no direct way to specify byte and short  literals expilictly. But indirectly we can specify 
+   whenever we are assigning integral literal to the byte variable and if the value within the range of byte then compilor treats it automatically as byte literals similarly short literals also 
+
+Byte b = 127;
+Byte b =128 -> ( possible loss of precision found: int  , required: byte;)
+
+Short s = 32767;
+Short s =32678;( possible loss of precision found: int  , required: short;)
+================================================================================================================
+FLOATING POINT LITERALS:
+
+By default every floating point literal is of double type and hence we cant assign directly to the float variable 
+but we can specify floating point literal as float type by suffixed with "f/F" 
+#example
+float f = 123.456(possible loss of precision found: double , required: float)
+float f =123.456F;
+double = 123.456;
+
+we can specify explicitly floating point literals as double type by suffixed with small d or D ofcourse this covention is not required.
+
+double d = 123.456D;
+float f = 123.456d:   --->(possible loss of precision found: double , required: float)
+@Imp: we can specify floating point literals only in decimal form we cant specify in octal and hexa decimal forms
+#example
+
+double d = 123.456;
+double d = 0123.456;
+double d = 0X123.456(Malformed floating point literals)
+
+Conclusion:
+we can assign integral literal directly to the floating point variable and  that integral literal can be specify eithrr in decimal or octal or hexa decimal forms.
+double d = 0786;
+double d = 0XFace;
+double d =0786.0;                double d = 10;
+                                                  sop(10)--->o/p: 10.0
+double d = 0XFace.0;
+double d= 10;
+double d = 0777;
+we cant assign floating point literals to integral types ,
+int d = 10.0;
+ but we can add integral point literals to floating types
+
+we can specify floating point literals even in exponential form (scientific notation)
+#exm:
+double d =1.2e3;-> 1.2*10^3->1.2*1000=1200.0
+float f -1.2e3->(possible loss of precision found: double , required: float)
+float f =1.2e3f;
+=================================================================================================================
+
+Boolean Literals:
+
+The only allowed values for boolean data type are true or false.
+boolean b =true;-->valid
+boolean b = 0;(incompatible types--> found:int , required:boolean)
+boolean b = True;(cannot find symbol--> var:True-->Location:classTest
+boolean b = "true";(incompatible types--> found:String , required:boolean)
+
+int x =0;
+if(x)                                                                                                                     while(1)
+{                                           (  both are incompatible types                     {
+s.o.p("Hello")                        becaz java expection boolean
+                                                  answer from condition                                 
+                                                    found :int , required :boolean)                       s.o.p("Hello")
+}
+else                                                                                                                       }
+{
+s.o.p("Hi")
+}
+
+
+=====================================================================================
+
+Char Literals:(www.unicode.org)
+
+we can specify char literals as single character within single quotes 
+#exm 
+char ch ='a';(valid)
+char ch =a;(cannot find symbol--> var:a-->Location:classTest)
+char ch ="a";(incompatible types--> found:String , required:char)
+char ch = 'ab';(CE1:unclosed char,CE2:unclosed char,CE1:not a statement)
+
+we can specify char literals as integrals literals which represents unicode value of the character and that integral literal can be specified either in decimal or octal or hexa decimal forms
+but allowed range is o to 65,535
+Ex :
+char ch =97;
+s.o.p(ch)-->0/p:a
+char ch =97;
+char ch = 0XFace;
+char ch = 0777;
+char ch =65535;
+char ch = 65536;--> (possible loss of precision found: int , required: char)
+
+w can represent char literals in unicode representation which is nothing but '\uxxxx'-->x is 4 didt hexa decimal number
+
+exp:
+char ch = '\u0061'->o/p:a
+
+Every escape character is valid char literal 
+
+Exm:
+char ch = '\n';
+char ch ='\t';
+char ch ='\m';(CE:illegal escape character)
+
+
+Escape char       Desc
+
+\n      ->   new line
+\t      ->    horizantal tab
+\r      ->   carraige return
+\b     ->  backspace
+\f     ->form feed
+\'      -> single quote
+\"    -> double quote
+\\    ->backslash symbol
+
+which of the following are valid?
+1. char ch =  65536;(valid)
+2.char ch = 0XBeer;(invalid)
+3.char ch = \uface;(invalid)
+4.char ch = '\uBeef';(valid)
+5.char ch = '\m';(invalid)
+6. char ch ='\i';(invalid)
+===============================================================================================================
+
+String Litreals:
+
+Any sequence of characters within double quotes is treated as string literals.
+
+#exp:
+
+String s ="Guru";
+1.7 version enhancements with respect to literals
+1. Binary Literals
+
+For integral data types untill 1.6 version we can specify literal values in the following ways
+
+1. decimal form
+2.Octal form
+3. Hexa decimal form
+
+but from 1.7 version onwrds we can specify literals value even in binary form also
+allowed digits are 0 and 1 
+literals value should be prefixed with 0b/0B
+#exp:
+int x = oB1111;->s.o.p(x)-15;
+
+2. usage of underscore symbols in numerical literals  from 1.7 verson onwards we can use underscore symbols between digits of numerical literal
+exp:
+double d = 123456.789;
+double d= 1_23_456.7_8_9;
+double d =123_456_789;
+Advantages of this approach is readability of the code will be improved 
+At the time of compilation this underscore symbol will be removed automatically.hence after compilation the above lines will become 
+double d= 123456.789;
+
+We can use more than 1 underscore symbol also between the digits
+
+double d = 1_2___3.789;
+double d= 1________2___8___10.765;
+
+we can use underscore symbol only between the digits, if we are using anywhere else we will get compile time error.
+double d = _123_567.7_8_0;{
+double  d= 123_567_.7_8_0;{    invalid}
+double d = 123_567.7_8_0_;{
+
+
+IMPORTANT DIAGRAM:
+
+byte -> short -> int ->long -> float -> double
+                              |
+                              char
+8 byte long value we can assign to 4 byte float variable because both are following different memory representation internally.
+
+exm;
+float f =10l
+s.o.p(f)->o/p:10.0;
+=====================================================================================
+
+Arrays:
+
+Agenda:
+
+1. Introduction
+2. Array declaration
+3. array creation
+4. Array Initialization
+5. Array declaration , creation and initalization in single line 
+6. Length  vs length()
+7. Anonymous arrays
+8. array element assignments 
+9. array variable assignments 
+
+1. Introduction:
+
+An array is an indexed colection of fixed number of homogeneous data elements 
+
+.->The main advantage of arrays is we can represent huge number of elements by using single variable  so 
+that readability of the code will be improved.
+ .->but the mail disadvantage of arrays is fixed in size(ie. once we can
+->array there is no chance of increasing or decreasing the size based on our requirement . 
+Hence to use concept compulsory we should know the size in advance, which may not possible always.
+
+2. Array Declaration
+
+1. one dimensional array declaration:
+      
+      int[] x; --->recommended becas name clearly seperated from type.
+      int  []x;
+      int x[];
+    At the time of declaration we cant't specify the size otherwise we will get compile time error (IMP)
+int [6]  x;(invalid)
+int[] x;(valid)
+     
+2. Two Dimensional Array Declaration:
+    
+int[][] x;
+int x[][];
+int  [][]x;
+int[] []x;
+int[] x[];
+int []x[]
+
+which of the following are valid?
+
+int[] a,b;a-1,b-1
+int[][] a,b;a-2,b-2;
+int[] a[],b;a-2,b-1;
+int[] a[],b[]; a-2,b-2;
+int[] []a,b[];a-2,b-3;
+int[]  []a,[]b-->compile time Error(because it will take first variable dimension by removing the space
+
+If we want to specify dimension before the variable that facility is applicable only for first variable in a declaration.
+If we are tring to apply for remaining variable we will get compile time error
+int [] []a,[]b,[]c-->only applicable until []a.
+
+Three Dimensional Array declaration.
+
+int[][][] a;
+int [][][]a;
+int a[][][];
+int[] a[][];
+int[] [][]a;
+int[] []a[];
+int[][] []a;
+int[][] a[];
+int []a[][];
+int [][]a[];
+
+Array Creation:
+
+Every array in java is an object only ,hence we can create arrays by using "new" operator 
+
+int[] a= new int[3];     a->3
+
+For every array type corresponding classes are available and this classes are part of java language and not available to the programer  level
+
+Example:
+int [] a = new int[3];
+System.out.prinln(a.getclass().getname());   -->O/p:[I
+
+
+ArrayType                                  Corresponding classes
+int[]                                                [I
+int[][]                                             [[I
+double[]                                        [D
+short[]                                           [S
+boolean[]                                      [Z
+byte[]                                             [B
+
+
+1    At the time of array creation compulsory we should specify the specify the size , otherwise we will get compile tme error
+Ex:
+int[] x = new int[];(Valid)
+int[] x= new int[6];
+
+2. It's an legal to have an array in java
+Ex:
+int[] x = new int[0];
+
+3  If we are trying to specify array size with some negative int value then we'll get runtime exception saying "Negative Array Size Exception"
+Ex:
+
+int[] x = new int[-6];
+
+4. To specify array size the allowed data types are 
+byte -> short -> int 
+                              |
+                              char
+
+if we are trying to specify any other type then we'll get compile time error 
+
+Ex:
+
+int[] x = new int['a'];
+int[] x = new int[10];
+byte b=20;
+int[] x = new int[b];
+short s=30;
+int[] x = new int[s];
+int[] x = new int[10l];--->invalid-->CE: (Possible loss of precaution found : long, required:int)
+
+
+the maximum allowed array size in java is 2147483647 which is the maximum value of int data type 
+
+int[] x = new int[2147483647];( sometimes may get out of memory error , its not program mistake , its resources gave low memory)
+int[] x = new int  [2147483647];->ce: integer number too large
+
+Even in the first case we may get run time ecxeption if substuant heap memory not available.
+
+
+Two Dimensional Array Creation:
+
+In java Two dimensional array not implemented by using ,matrix style some people followed "array of arrays" approach for multi dimensional
+array creation
+The main advantage of this approach is memory utilization will be improved. 
+
+Example1:
+
+int[][] x = new int[2][];
+x[0]=new int[3];
+x[1] = new int[2];
+
+Three Dimensional Array (pls check pic in saved pictures loc)
+
+Questions"
+
+Which of the following array declaration are valid?
+int a[] = new int[];
+int [] a = new int[3];c
+int [][] a= new [][];
+int [][]a = new [3][];c
+int[][]a = new int[][4];
+int [][]a = new int [3][4];c
+int [][][]a = new int [3][4][5];c
+int [][][]a = new int [3][4][];c
+int[][][]a = new int [3][][5];
+int[][][]a new int[][4][5];
+
+Array Intialization:
+
+Once we creates an array everyt element by default initialized with default values .
+
+int [] x = new int [3];
+System.out.println(x)---->o/p:[I@087ed
+System.out.println(x[0]);-->o/p:0
+
+Whenever we are trying to print 
+NOTE: any reference variable internally 2 string method will be called which is implemented by default 
+to return the string in the following form.
+class name,@,hashcode in hexa decimal form
+[I@32e5mw;
+
+2.
+int [][]x = new int[3][2];
+System.out.println(x)---->o/p:[[I@087ed
+System.out.println(x[0]);--->0/p:[I@086ed
+System.out.println(x[0][0]);-->o/p:
+
+3.
+int [][]x = new int[2][];
+System.out.println(x)---->o/p:[[I@087ed
+System.out.println(x[0]);--->0/p:null ( because its array (ie array object reference default value null)
+System.out.println(x[0][0]);-->o/p:Null pointer exception
+NOTE: If we are trying to perform any operation on null then we will get run time exception saying null piinter exception
+
+Once we creates an array every array element by default intialized with default values , If we are npt satiesfied with default vales then we can
+override this values  with our customized values .
+
+int [] x = new int[6];
+x[0] =10;
+x[1]=20;
+:
+:
+X[6]=30;-->RE:Array Index out of bound exception.
+X[-6] = 40-->Array index out of bound exception
+X[2.5]=10;-->CE: Possible loss of precision.
+
+Array Declaration,Creation and Initialization in a single line:
+We can declare,create and initiaze an array in single line ( Shortcut representation) 
+int [] x = new int[3];
+x[0]=10,        int[] x ={10,20,20{;
+                        char[] ch ={'a','b','c'}
+                         String[] str ={"A","AA","AAA"}
+x[1]=20;
+x[2]=30;
+
+we can extend this large for multi dimensional arrays also 
+
+int [] x ={ {10,20},{30,40,50}};
+                     
